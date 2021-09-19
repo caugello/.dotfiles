@@ -1,0 +1,63 @@
+configuration {
+  display-window: "";
+  display-drun: "";
+  display-combi: "";
+  font: "Fira Mono Nerd Font Medium 14";
+  modi: "window,drun";
+  drun-display-format: "{name}";
+  window-format: "{t}";
+  show-match: false;
+  show-icons: true;
+  terminal: "terminator";
+}
+
+@theme "/dev/null"
+
+* {
+  text-selected: #dff700;
+  text-unselected: #626469;
+  background-color: #121a27;
+}
+
+window {
+  border-radius: 25px;
+  border-color: #dff700;
+  border: 1px;
+  padding: 20px;
+  background-color: @background-color;
+  text-color: @text-selected;
+}
+
+element-icon {
+  size: 20;
+}
+
+element {
+  padding: 10px 10px;
+  text-color: @text-unselected;
+}
+
+element selected {
+  text-color: @text-selected;
+}
+
+entry {
+  padding: 10 0 0 10;
+  text-color: @text-selected;
+}
+
+listview {
+  lines: 5;
+}
+
+textbox {
+  padding: 10 10 10 10;
+  text-color: @text-selected;
+}
+
+element-icon, element-text {
+  text-color: inherit;
+  background-color: inherit;
+  highlight: none;
+}
+
