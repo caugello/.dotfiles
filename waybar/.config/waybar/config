@@ -1,0 +1,71 @@
+{
+	"layer": "top",
+	"modules-left": ["sway/workspaces", "sway/mode"],
+	"modules-center": ["clock"],
+	"modules-right": ["custom/spotify-metadata","custom/spotify-previous", "custom/spotify-playpause", "custom/spotify-next", "custom/empty", "pulseaudio", "cpu", "memory", "battery", "tray"],
+	"pulseaudio": {
+		"tooltip": false,
+		"scroll-step": 5,
+		"format": "{icon} {volume}%",
+		"format-icons": {
+			"default": ["", "", ""]
+		},
+    "on-click": "pavucontrol"
+	},
+	 "network": {
+    "format-wifi": "{essid} ({signalStrength}%) ",
+    "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+    "format-linked": "{ifname} (No IP) ",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}",
+    "on-click": "nm-applet --indicator",
+    "format-disconnected": "Disconnected ⚠",
+  },
+	"cpu": {
+		"tooltip": false,
+		"format": " {}%"
+	},
+	"memory": {
+		"tooltip": false,
+		"format": " {}%"
+	},
+  "clock": {
+    "timezone": "Europe/Brussels",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": "{:%Y-%m-%d}"
+  },
+   "tray": {
+      "spacing": 10
+  },
+  "battery": {
+    "states": {
+      "good": 90,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    "format-alt": "{time} {icon}",
+    "format-icons": ["", "", "", "", ""]
+  },
+  "custom/empty": {
+      "format": "<span></span>"
+  },
+  "custom/spotify-metadata": {
+    "exec": "~/.config/waybar/scripts/spotify.sh metadata",
+    "interval": 15,
+    "format": "  {}"
+  },
+  "custom/spotify-playpause": {
+    "format": "",
+    "on-click": "~/.config/waybar/scripts/spotify.sh playpause"
+  },
+  "custom/spotify-previous": {
+    "format": "",
+    "on-click": "~/.config/waybar/scripts/spotify.sh previous"
+  },
+  "custom/spotify-next": {
+    "format": "",
+    "on-click": "~/.config/waybar/scripts/spotify.sh next"
+  }
+}

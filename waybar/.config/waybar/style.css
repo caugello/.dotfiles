@@ -1,0 +1,119 @@
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "Fira Mono Nerd Font Medium", "Font Awesome 5 Free", "Font Awesome 5 Brands", "FontAwesome";
+  font-weight: 600;
+  min-height: 24px;
+}
+
+window {
+  color: #ff0445;
+  background: #121a27;
+}
+window#waybar {
+  color: #fff;
+  background: #121a27;
+  border-bottom: 2px solid #950a97;
+}
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+#workspaces {
+  font-size: 14px;
+  background: #121a27;
+  margin-top: 8px;
+  border-bottom: 2px solid #950a97;
+}
+#workspaces button {
+  color: #fff;
+  border-bottom: 2px solid transparent;
+}
+#workspaces button:last-child {
+  border-right: 2px solid #950a97;
+}
+#workspaces button:hover {
+  transition: none;
+  background: transparent;
+  box-shadow: inherit;
+  text-shadow: inherit;
+  border-bottom: 2px solid #dff700;
+  color: #729ea1;
+}
+#workspaces button.focused {
+  color: #ff0445;
+}
+
+.modules-left * {
+  font-size: 14px;
+  margin-right: 15px;
+}
+
+.modules-center * {
+  margin-right: 15px;
+  font-size: 14px;
+}
+
+.modules-right * {
+  margin-right: 15px;
+  font-size: 14px;
+  color: #dd0282;
+}
+
+#custom-empty {
+  border-left: 2px solid #950a97;
+  margin-right: 20px;
+}
+
+#custom-spotify-metadata, #custom-spotify-playpause, #custom-spotify-previous, #custom-spotify-next {
+  color: #1DB954;
+}
+
+#clock {
+  font-size: 20px;
+  animation: color 10s cubic-bezier(1, 0, 0, 1) infinite;
+}
+
+#battery {
+  color: #729ea1;
+}
+
+#cpu {
+  color: #ff0445;
+}
+
+#memory {
+  color: #dff700;
+}
+
+@keyframes color {
+  0% {
+    color: #950a97;
+  }
+  12% {
+    color: #dd0282;
+  }
+  25% {
+    color: #ff0445;
+  }
+  38% {
+    color: #dff700;
+  }
+  50% {
+    color: #729ea1;
+  }
+  62% {
+    color: #dff700;
+  }
+  75% {
+    color: #ff0445;
+  }
+  88% {
+    color: #dd0282;
+  }
+  100% {
+    color: #950a97;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
