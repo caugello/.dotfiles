@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# Get last part of PWD
+SESSION_NAME=$(echo $PWD | rev | cut -d '/' -f1 | rev | sed 's/\./_/g')
+
+# Determine if the session exists
+tmux has-session -t $SESSION_NAME &> /dev/null
+
+# The session doesn't exists, create it.
+# Apply session specific configuration if the SESSION_NAME has a match.
+if [ "$?" -eq 1 ]; then
+  case "$SESSION_NAME" in
+    "comet")
+      tmux new-session -d -s $SESSION_NAME -c $PWD -n nvim
+      tmux new-window -d -t $SESSION_NAME -c $PWD/frontend -n runtime
+      tmux split-window -h -c $PWD/backend -t comet:2
+      tmux new-window -d -t $SESSION_NAME -c $PWD/frontend -n unit-tests
+      tmux split-window -h -c $PWD/backend -t comet:3
+      tmux new-window -d -t $SESSION_NAME -c $PWD/test -n e2e
+      tmux split-window -h -c $PWD/devel-env -t comet:4
+      ;;
+    *)
+      tmux new-session -d -s $SESSION_NAME -c $PWD
+      ;;
+  esac
+fi
