@@ -17,9 +17,8 @@ local set_mappings = function(project)
       cmds = {
         {
           mapping = '<F9>',
-          command = string.format(
-            'pushd %s/frontend && npm run test-chrome-headless-no-sandbox',
-            project_dir)
+          command = 'echo "Dispatched frontend tests" && ' ..
+          'tmux send-keys -t comet:3.0 "npm run test-chrome-headless-no-sandbox" Enter'
         },
         {
           mapping = '<F10>',

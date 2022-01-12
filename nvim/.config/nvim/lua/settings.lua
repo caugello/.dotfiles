@@ -43,5 +43,5 @@ autocmd BufWritePost *.ts silent exec "!tslint --quiet --force --fix %:p"
 autocmd FocusGained *.ts e!
 augroup END
 ]])
-vim.api.nvim_command('autocmd FileType typescript set colorcolumn=140')
-vim.api.nvim_command('autocmd FileType python,lua set colorcolumn=79')
+vim.api.nvim_command('autocmd FileType typescript,lua set colorcolumn=140')
+vim.api.nvim_command('autocmd FileType python set colorcolumn=79')

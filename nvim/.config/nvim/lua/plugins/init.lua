@@ -1,16 +1,24 @@
 local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.vim/plugged')
 -- Add plugins
+Plug 'sudormrfbin/cheatsheet.nvim'
+Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'onsails/lspkind-nvim'
+Plug 'tami5/lspsaga.nvim'
 Plug 'nvim-lua/completion-nvim'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
-Plug 'kabouzeid/nvim-lspinstall'
-Plug 'glepnir/lspsaga.nvim'
+Plug 'hrsh7th/cmp-nvim-lua'
+Plug 'hrsh7th/cmp-path'
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+Plug ('tzachar/cmp-tabnine', {['do'] = './install.sh'})
+Plug 'SirVer/ultisnips'
+Plug 'rafamadriz/friendly-snippets'
 Plug 'artanikin/vim-synthwave84'
 Plug 'folke/trouble.nvim'
 Plug ('glepnir/galaxyline.nvim', {['branch'] = 'main'})
