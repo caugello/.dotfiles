@@ -16,6 +16,7 @@ local opts = {
 map('n', '<leader>ff', '<cmd>Telescope find_files<cr>', opts)
 map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', opts)
 map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', opts)
+map('n', '<leader>fh', "<cmd>lua require'telescope.builtin'.help_tags()<cr>", opts)
 
 map('n', '<leader>gs', '<cmd>Telescope git_status<cr>', opts)
 map('n', '<leader>gc', '<cmd>Telescope git_commits<cr>', opts)
