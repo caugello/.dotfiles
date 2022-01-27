@@ -15,6 +15,20 @@ cmp.setup {
     ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({
       behavior = cmp.SelectBehavior.Select
     }), {'i'}),
+    ['<PageDown>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      else
+        fallback()
+      end
+    end,
+    ['<PageUp>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      else
+        fallback()
+      end
+    end,
     ["<Tab>"] = cmp.mapping(function(fallback)
         vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>(Tabout)", true, true, true), "") 
     end, { "i", "s" }),
