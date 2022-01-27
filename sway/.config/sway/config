@@ -31,6 +31,8 @@ output * bg ~/Pictures/spacesoldier.jpg fill
 
 # start notification service
 exec mako
+# start polkit service
+exec lxpolkit
 #
 # Example configuration:
 #
