@@ -10,6 +10,7 @@ local set_mappings = function(project)
         {
           mapping = '<F9>',
           command = 'python -m unittest */**/test_*.py',
+          autoclose = 0,
         },
       }
     },
@@ -18,12 +19,13 @@ local set_mappings = function(project)
         {
           mapping = '<F9>',
           command = 'echo "Dispatched frontend tests" && ' ..
-          'tmux send-keys -t comet:3.0 "npm run test-chrome-headless-no-sandbox" Enter'
+          'tmux send-keys -t comet:3.0 "npm run test-chrome-headless-no-sandbox" Enter',
+          autoclose = 1,
         },
         {
           mapping = '<F10>',
-          command = string.format(
-            'pushd %s/backend && tox -e py38', project_dir)
+          command = string.format('pushd %s/backend && tox -e py38', project_dir),
+          autoclose = 0,
         }
       }
     },
@@ -31,7 +33,8 @@ local set_mappings = function(project)
       cmds = {
         {
           mapping = '<F9>',
-          command = 'sass style.scss style.css'
+          command = 'sass style.scss style.css',
+          autoclose = 0,
         }
       }
     },
@@ -39,7 +42,8 @@ local set_mappings = function(project)
       cmds = {
         {
           mapping = '<F9>',
-          command= 'docker build --rm -t system-setup .'
+          command= 'docker build --rm -t system-setup .',
+          autoclose = 0,
         }
       }
     }
@@ -49,9 +53,8 @@ local set_mappings = function(project)
     for i=1, #setup[project].cmds do
       map('n',
           setup[project].cmds[i].mapping,
-          string.format(
-          ':FloatermNew --height=0.75 --width=0.75 --autoclose=0 %s<CR>',
-          setup[project].cmds[i].command),
+          string.format(':FloatermNew --height=0.75 --width=0.75 --autoclose=%i %s<CR>', 
+            setup[project].cmds[i].autoclose, setup[project].cmds[i].command),
           opts)
     end
   end
