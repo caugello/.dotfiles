@@ -19,6 +19,13 @@ if [ "$?" -eq 1 ]; then
       tmux new-window -d -t $SESSION_NAME -c $PWD/test -n e2e
       tmux split-window -h -c $PWD/devel-env -t comet:4
       ;;
+    "infra-deployments")
+      tmux new-session -d -s $SESSION_NAME -c $PWD -n nvim
+      tmux new-window -d -t $SESSION_NAME -c $PWD -n oc-kubectl
+      tmux new-window -d -t $SESSION_NAME -c $HOME/hacbs -n hacbs
+      tmux new-window -d -t $SESSION_NAME -c $PWD -n logs
+      tmux new-window -d -t $SESSION_NAME -c $PWD -n shell
+      ;;
     *)
       tmux new-session -d -s $SESSION_NAME -c $PWD
       ;;
