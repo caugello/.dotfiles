@@ -39,9 +39,10 @@ vim.api.nvim_command('autocmd BufNewFile,BufRead *.ts setlocal filetype=typescri
 -- Execute tslint and refresh file. Takes a bit of time to refresh.
 vim.api.nvim_command([[
 augroup TsLint
-autocmd BufWritePost *.ts silent exec "!tslint --quiet --force --fix %:p"
+autocmd BufWritePost *.ts silent exec "!frontend/node_modules/.bin/prettier --config frontend/.prettierrc -w %:p"
 autocmd FocusGained *.ts e!
 augroup END
 ]])
 vim.api.nvim_command('autocmd FileType typescript,lua set colorcolumn=140')
 vim.api.nvim_command('autocmd FileType python set colorcolumn=79')
+vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)

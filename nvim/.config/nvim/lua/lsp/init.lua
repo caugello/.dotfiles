@@ -21,9 +21,16 @@ local cmp = require('cmp_nvim_lsp')
 
 lsp_installer.on_server_ready(function(server)
   local opts = {
-    capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
   }
   -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
   server:setup(opts)
   vim.cmd [[ do User LspAttachBuffers ]]
 end)
+
+require "lsp_signature".setup({
+  bind = true, -- This is mandatory, otherwise border config won't get registered.
+  handler_opts = {
+    border = "rounded"
+  }
+})

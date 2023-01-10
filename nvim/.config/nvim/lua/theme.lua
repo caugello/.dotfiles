@@ -1,6 +1,6 @@
 local apply_globals = require('utils').apply_globals
 
-local name = 'synthwave84'
+local name = 'catppuccin'
 apply_globals({
   colors_name = name,
 })

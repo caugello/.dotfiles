@@ -7,8 +7,10 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
+Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'onsails/lspkind-nvim'
 Plug 'tami5/lspsaga.nvim'
+Plug 'ray-x/lsp_signature.nvim'
 Plug 'nvim-lua/completion-nvim'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -35,6 +37,15 @@ Plug 'abecodes/tabout.nvim'
 Plug 'ThePrimeagen/harpoon'
 Plug 'voldikss/vim-floaterm'
 Plug 'ryanoasis/vim-devicons'
+Plug 'ray-x/go.nvim'
+Plug 'EdenEast/nightfox.nvim'
+Plug 'hoschi/yode-nvim'
+Plug ('catppuccin/nvim', {['as'] = 'catppuccin'})
+Plug 'AndrewRadev/diffurcate.vim'
+Plug 'stevearc/dressing.nvim'
+Plug 'stevearc/vim-arduino'
+Plug 'weilbith/nvim-code-action-menu'
+Plug 'cuducos/yaml.nvim'
 vim.call('plug#end')
 
 require('lsp')
@@ -48,7 +59,10 @@ require('plugins.saga')
 require('plugins.tree')
 require('plugins.gs')
 require('plugins.autopairs')
-require('plugins.indent')
+--require('plugins.indent')
 require('plugins.harpoon')
 require('plugins.tabout')
 require('plugins.floaterm')
+require('plugins.go')
+require('plugins.yode')
+require('plugins.arduino')

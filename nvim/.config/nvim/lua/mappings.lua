@@ -11,6 +11,9 @@ map('i', '<Left>', '<Nop>', { noremap = true, silent = true })
 map('i', '<Right>', '<Nop>', { noremap = true, silent = true })
 map('n', 'Q', '<Nop>', { noremap = true, silent = true })
 map('n', '<C-z>', '<Nop>', { noremap = true, silent = true })
+map('i', '<F1>', '<Esc>', { noremap = true, silent = true })
+map('n', '<F1>', '<Esc>', { noremap = true, silent = true })
+map('v', '<F1>', '<Esc>', { noremap = true, silent = true })
 
 -- keep visual selection when indenting
 map('v', '<', '<gv', { noremap = true, silent = true })
