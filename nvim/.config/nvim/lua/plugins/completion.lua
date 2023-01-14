@@ -1,5 +1,6 @@
 local cmp = require('cmp')
 local lspkind = require('lspkind')
+local luasnip = require('luasnip')
 lspkind.init()
 
 cmp.setup {
@@ -30,19 +31,19 @@ cmp.setup {
       end
     end,
     ["<Tab>"] = cmp.mapping(function(fallback)
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>(Tabout)", true, true, true), "") 
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>(Tabout)", true, true, true), "")
     end, { "i", "s" }),
   },
   snippet = {
     expand = function(args)
-      vim.fn["UltiSnips#Anon"](args.body)
+      luasnip.lsp_expand(args.body)
     end
   },
   sources = {
     { name = 'nvim_lsp' },
     { name = 'cmp_tabnine'},
+    { name = 'luasnip' },
     { name = 'nvim_lua'},
-    { name = 'ultisnips' },
     { name = 'buffer', keyword_length=5},
     { name = 'path'},
   },

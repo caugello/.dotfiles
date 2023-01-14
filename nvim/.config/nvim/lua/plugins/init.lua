@@ -1,68 +1,98 @@
-local Plug = vim.fn['plug#']
-vim.call('plug#begin', '~/.vim/plugged')
--- Add plugins
-Plug 'sudormrfbin/cheatsheet.nvim'
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'neovim/nvim-lspconfig'
-Plug 'williamboman/nvim-lsp-installer'
-Plug 'jose-elias-alvarez/null-ls.nvim'
-Plug 'onsails/lspkind-nvim'
-Plug 'tami5/lspsaga.nvim'
-Plug 'ray-x/lsp_signature.nvim'
-Plug 'nvim-lua/completion-nvim'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-nvim-lua'
-Plug 'hrsh7th/cmp-path'
-Plug 'quangnguyen30192/cmp-nvim-ultisnips'
-Plug ('tzachar/cmp-tabnine', {['do'] = './install.sh'})
-Plug 'SirVer/ultisnips'
-Plug 'rafamadriz/friendly-snippets'
-Plug 'artanikin/vim-synthwave84'
-Plug 'folke/trouble.nvim'
-Plug ('glepnir/galaxyline.nvim', {['branch'] = 'main'})
-Plug 'kyazdani42/nvim-web-devicons' -- status line icons
-Plug 'kyazdani42/nvim-tree.lua'
-Plug ('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
-Plug 'preservim/nerdcommenter'
-Plug 'tpope/vim-fugitive'
-Plug 'lewis6991/gitsigns.nvim'
-Plug 'windwp/nvim-autopairs'
-Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'nvim-lua/popup.nvim'
-Plug 'abecodes/tabout.nvim'
-Plug 'ThePrimeagen/harpoon'
-Plug 'voldikss/vim-floaterm'
-Plug 'ryanoasis/vim-devicons'
-Plug 'ray-x/go.nvim'
-Plug 'EdenEast/nightfox.nvim'
-Plug 'hoschi/yode-nvim'
-Plug ('catppuccin/nvim', {['as'] = 'catppuccin'})
-Plug 'AndrewRadev/diffurcate.vim'
-Plug 'stevearc/dressing.nvim'
-Plug 'stevearc/vim-arduino'
-Plug 'weilbith/nvim-code-action-menu'
-Plug 'cuducos/yaml.nvim'
-vim.call('plug#end')
+-- Install packer
+local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
+local is_bootstrap = false
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+  is_bootstrap = true
+  vim.fn.system { 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path }
+  vim.cmd [[packadd packer.nvim]]
+end
+
+require('packer').startup(function(use)
+  -- Package manager
+  use 'wbthomason/packer.nvim'
+
+  use { -- LSP Configuration & Plugins
+    'neovim/nvim-lspconfig',
+    requires = {
+      -- Automatically install LSPs to stdpath for neovim
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
+
+      -- Useful status updates for LSP
+      'j-hui/fidget.nvim',
+
+      -- Additional lua configuration, makes nvim stuff amazing
+      'folke/neodev.nvim',
+    },
+  }
+
+  use { -- Autocompletion
+    'hrsh7th/nvim-cmp',
+    requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+  }
+ 	use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
+  use 'onsails/lspkind-nvim'
+
+
+  use { -- Highlight, edit, and navigate code
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+      pcall(require('nvim-treesitter.install').update { with_sync = true })
+    end,
+  }
+
+  use { -- Additional text objects via treesitter
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    after = 'nvim-treesitter',
+  }
+
+  -- Git related plugins
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-rhubarb'
+  use 'lewis6991/gitsigns.nvim'
+
+  use 'navarasu/onedark.nvim' -- Theme inspired by Atom
+  use 'nvim-lualine/lualine.nvim' -- Fancier statusline
+  use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
+  use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
+  use 'preservim/nerdcommenter'
+
+  -- Fuzzy Finder (files, lsp, etc)
+  use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
+
+  -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
+
+  -- Additonal plugins
+  use { "catppuccin/nvim", as = "catppuccin" }
+  use 'ryanoasis/vim-devicons'
+  use 'kyazdani42/nvim-web-devicons' -- status line icons
+  use 'ThePrimeagen/harpoon'
+  use 'folke/trouble.nvim'
+  use 'abecodes/tabout.nvim'
+  use 'windwp/nvim-autopairs'
+  use 'ray-x/go.nvim'
+  use 'hoschi/yode-nvim'
+  use 'voldikss/vim-floaterm'
+  use 'sudormrfbin/cheatsheet.nvim'
+
+  if is_bootstrap then
+    require('packer').sync()
+  end
+end)
 
 require('lsp')
 require('plugins.telescope')
 require('plugins.completion')
 require('plugins.webdev-icons')
-require('plugins.statusline')
+require('plugins.lualine')
 require('plugins.treesitter')
 require('plugins.trouble')
-require('plugins.saga')
-require('plugins.tree')
 require('plugins.gs')
 require('plugins.autopairs')
---require('plugins.indent')
+require('plugins.indent')
 require('plugins.harpoon')
 require('plugins.tabout')
 require('plugins.floaterm')
 require('plugins.go')
 require('plugins.yode')
-require('plugins.arduino')
