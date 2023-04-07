@@ -26,11 +26,24 @@ require('packer').startup(function(use)
     },
   }
 
+  use { 'codota/tabnine-nvim', run = "./dl_binaries.sh", config = function ()
+    require('tabnine').setup({
+      disable_auto_comment=true,
+      accept_keymap="<Tab>",
+      dismiss_keymap = "<C-]>",
+      debounce_ms = 800,
+      suggestion_color = {gui = "#808080", cterm = 244},
+      exclude_filetypes = {"TelescopePrompt"}
+    })
+    end
+  }
+
   use { -- Autocompletion
     'hrsh7th/nvim-cmp',
     requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
   }
- 	use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
+
+  use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
   use 'onsails/lspkind-nvim'
 
 
@@ -63,18 +76,47 @@ require('packer').startup(function(use)
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
 
+  use {
+  'abecodes/tabout.nvim',
+  config = function()
+    require('tabout').setup {
+    tabkey = '<Tab>', -- key to trigger tabout, set to an empty string to disable
+    backwards_tabkey = '<S-Tab>', -- key to trigger backwards tabout, set to an empty string to disable
+    act_as_tab = true, -- shift content if tab out is not possible
+    act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
+    default_tab = '<C-t>', -- shift default action (only at the beginning of a line, otherwise <TAB> is used)
+    default_shift_tab = '<C-d>', -- reverse shift default action,
+    enable_backwards = true, -- well ...
+    completion = true, -- if the tabkey is used in a completion pum
+    tabouts = {
+      {open = "'", close = "'"},
+      {open = '"', close = '"'},
+      {open = '`', close = '`'},
+      {open = '(', close = ')'},
+      {open = '[', close = ']'},
+      {open = '{', close = '}'}
+    },
+    ignore_beginning = true, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
+    exclude = {} -- tabout will ignore these filetypes
+}
+  end,
+	wants = {'nvim-treesitter'}, -- or require if not used so far
+	after = {'nvim-cmp'} -- if a completion plugin is using tabs load it before
+}
+
   -- Additonal plugins
   use { "catppuccin/nvim", as = "catppuccin" }
   use 'ryanoasis/vim-devicons'
   use 'kyazdani42/nvim-web-devicons' -- status line icons
   use 'ThePrimeagen/harpoon'
   use 'folke/trouble.nvim'
-  use 'abecodes/tabout.nvim'
   use 'windwp/nvim-autopairs'
   use 'ray-x/go.nvim'
   use 'hoschi/yode-nvim'
   use 'voldikss/vim-floaterm'
   use 'sudormrfbin/cheatsheet.nvim'
+  use('jose-elias-alvarez/null-ls.nvim')
+  use('MunifTanjim/prettier.nvim')
 
   if is_bootstrap then
     require('packer').sync()
@@ -92,7 +134,7 @@ require('plugins.gs')
 require('plugins.autopairs')
 require('plugins.indent')
 require('plugins.harpoon')
-require('plugins.tabout')
 require('plugins.floaterm')
 require('plugins.go')
 require('plugins.yode')
+require('plugins.prettier')

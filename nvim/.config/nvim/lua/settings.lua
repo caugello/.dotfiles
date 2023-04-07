@@ -37,9 +37,10 @@ apply_options({
 vim.api.nvim_command('filetype plugin on')
 vim.api.nvim_command('autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript')
 -- Execute tslint and refresh file. Takes a bit of time to refresh.
+-- autocmd BufWritePost *.ts silent exec "!frontend/node_modules/.bin/prettier --config frontend/.prettierrc -w %:p"
 vim.api.nvim_command([[
 augroup TsLint
-autocmd BufWritePost *.ts silent exec "!frontend/node_modules/.bin/prettier --config frontend/.prettierrc -w %:p"
+autocmd BufWritePost *.ts silent exec "Prettier"
 autocmd FocusGained *.ts e!
 augroup END
 ]])
