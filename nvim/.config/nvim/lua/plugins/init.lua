@@ -26,6 +26,14 @@ require('packer').startup(function(use)
     },
   }
 
+  use {
+    'j-hui/fidget.nvim',
+    tag = 'legacy',
+    config = function()
+      require("fidget").setup {}
+    end,
+  }
+
   use { 'codota/tabnine-nvim', run = "./dl_binaries.sh", config = function ()
     require('tabnine').setup({
       disable_auto_comment=true,
@@ -106,6 +114,7 @@ require('packer').startup(function(use)
 
   -- Additonal plugins
   use { "catppuccin/nvim", as = "catppuccin" }
+  use 'robitx/gp.nvim'
   use 'ryanoasis/vim-devicons'
   use 'kyazdani42/nvim-web-devicons' -- status line icons
   use 'ThePrimeagen/harpoon'
@@ -138,3 +147,4 @@ require('plugins.floaterm')
 require('plugins.go')
 require('plugins.yode')
 require('plugins.prettier')
+require('plugins.gp')

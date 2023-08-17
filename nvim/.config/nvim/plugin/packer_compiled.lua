@@ -105,6 +105,7 @@ _G.packer_plugins = {
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["fidget.nvim"] = {
+    config = { "\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vfidget\frequire\0" },
     loaded = true,
     path = "/home/caugello/.local/share/nvim/site/pack/packer/start/fidget.nvim",
     url = "https://github.com/j-hui/fidget.nvim"
@@ -118,6 +119,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/caugello/.local/share/nvim/site/pack/packer/start/go.nvim",
     url = "https://github.com/ray-x/go.nvim"
+  },
+  ["gp.nvim"] = {
+    config = { "\27LJ\2\n0\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\agp\frequire\0" },
+    loaded = true,
+    path = "/home/caugello/.local/share/nvim/site/pack/packer/start/gp.nvim",
+    url = "https://github.com/robitx/gp.nvim"
   },
   harpoon = {
     loaded = true,
@@ -217,13 +224,13 @@ _G.packer_plugins = {
     url = "https://github.com/MunifTanjim/prettier.nvim"
   },
   ["tabnine-nvim"] = {
-    config = { "\27LJ\2\në\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\22exclude_filetypes\1\2\0\0\20TelescopePrompt\21suggestion_color\1\0\2\bgui\f#808080\ncterm\3ô\1\1\0\4\19dismiss_keymap\n<C-]>\18accept_keymap\f<C-Tab>\25disable_auto_comment\2\16debounce_ms\3 \6\nsetup\ftabnine\frequire\0" },
+    config = { "\27LJ\2\né\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\22exclude_filetypes\1\2\0\0\20TelescopePrompt\21suggestion_color\1\0\2\bgui\f#808080\ncterm\3ô\1\1\0\4\16debounce_ms\3 \6\19dismiss_keymap\n<C-]>\18accept_keymap\n<Tab>\25disable_auto_comment\2\nsetup\ftabnine\frequire\0" },
     loaded = true,
     path = "/home/caugello/.local/share/nvim/site/pack/packer/start/tabnine-nvim",
     url = "https://github.com/codota/tabnine-nvim"
   },
   ["tabout.nvim"] = {
-    config = { "\27LJ\2\n•\3\0\0\5\0\f\0\0236\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0004\3\a\0005\4\4\0>\4\1\0035\4\5\0>\4\2\0035\4\6\0>\4\3\0035\4\a\0>\4\4\0035\4\b\0>\4\5\0035\4\t\0>\4\6\3=\3\n\0024\3\0\0=\3\v\2B\0\2\1K\0\1\0\fexclude\ftabouts\1\0\2\topen\6{\nclose\6}\1\0\2\topen\6[\nclose\6]\1\0\2\topen\6(\nclose\6)\1\0\2\topen\6`\nclose\6`\1\0\2\topen\6\"\nclose\6\"\1\0\2\topen\6'\nclose\6'\1\0\t\21ignore_beginning\2\16default_tab\n<C-t>\21act_as_shift_tab\1\15act_as_tab\2\21backwards_tabkey\f<S-Tab>\vtabkey\n<Tab>\15completion\2\21enable_backwards\2\22default_shift_tab\n<C-d>\nsetup\vtabout\frequire\0" },
+    config = { "\27LJ\2\n•\3\0\0\5\0\f\0\0236\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0004\3\a\0005\4\4\0>\4\1\0035\4\5\0>\4\2\0035\4\6\0>\4\3\0035\4\a\0>\4\4\0035\4\b\0>\4\5\0035\4\t\0>\4\6\3=\3\n\0024\3\0\0=\3\v\2B\0\2\1K\0\1\0\fexclude\ftabouts\1\0\2\nclose\6}\topen\6{\1\0\2\nclose\6]\topen\6[\1\0\2\nclose\6)\topen\6(\1\0\2\nclose\6`\topen\6`\1\0\2\nclose\6\"\topen\6\"\1\0\2\nclose\6'\topen\6'\1\0\t\21enable_backwards\2\22default_shift_tab\n<C-d>\21ignore_beginning\2\16default_tab\n<C-t>\21act_as_shift_tab\1\15act_as_tab\2\21backwards_tabkey\f<S-Tab>\vtabkey\n<Tab>\15completion\2\nsetup\vtabout\frequire\0" },
     load_after = {},
     loaded = true,
     needs_bufread = false,
@@ -284,8 +291,16 @@ _G.packer_plugins = {
 time([[Defining packer_plugins]], false)
 -- Config for: tabnine-nvim
 time([[Config for tabnine-nvim]], true)
-try_loadstring("\27LJ\2\në\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\22exclude_filetypes\1\2\0\0\20TelescopePrompt\21suggestion_color\1\0\2\bgui\f#808080\ncterm\3ô\1\1\0\4\19dismiss_keymap\n<C-]>\18accept_keymap\f<C-Tab>\25disable_auto_comment\2\16debounce_ms\3 \6\nsetup\ftabnine\frequire\0", "config", "tabnine-nvim")
+try_loadstring("\27LJ\2\né\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\22exclude_filetypes\1\2\0\0\20TelescopePrompt\21suggestion_color\1\0\2\bgui\f#808080\ncterm\3ô\1\1\0\4\16debounce_ms\3 \6\19dismiss_keymap\n<C-]>\18accept_keymap\n<Tab>\25disable_auto_comment\2\nsetup\ftabnine\frequire\0", "config", "tabnine-nvim")
 time([[Config for tabnine-nvim]], false)
+-- Config for: gp.nvim
+time([[Config for gp.nvim]], true)
+try_loadstring("\27LJ\2\n0\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\agp\frequire\0", "config", "gp.nvim")
+time([[Config for gp.nvim]], false)
+-- Config for: fidget.nvim
+time([[Config for fidget.nvim]], true)
+try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vfidget\frequire\0", "config", "fidget.nvim")
+time([[Config for fidget.nvim]], false)
 -- Conditional loads
 time([[Conditional loading of telescope-fzf-native.nvim]], true)
   require("packer.load")({"telescope-fzf-native.nvim"}, {}, _G.packer_plugins)
@@ -298,7 +313,7 @@ vim.cmd [[ packadd nvim-cmp ]]
 vim.cmd [[ packadd tabout.nvim ]]
 
 -- Config for: tabout.nvim
-try_loadstring("\27LJ\2\n•\3\0\0\5\0\f\0\0236\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0004\3\a\0005\4\4\0>\4\1\0035\4\5\0>\4\2\0035\4\6\0>\4\3\0035\4\a\0>\4\4\0035\4\b\0>\4\5\0035\4\t\0>\4\6\3=\3\n\0024\3\0\0=\3\v\2B\0\2\1K\0\1\0\fexclude\ftabouts\1\0\2\topen\6{\nclose\6}\1\0\2\topen\6[\nclose\6]\1\0\2\topen\6(\nclose\6)\1\0\2\topen\6`\nclose\6`\1\0\2\topen\6\"\nclose\6\"\1\0\2\topen\6'\nclose\6'\1\0\t\21ignore_beginning\2\16default_tab\n<C-t>\21act_as_shift_tab\1\15act_as_tab\2\21backwards_tabkey\f<S-Tab>\vtabkey\n<Tab>\15completion\2\21enable_backwards\2\22default_shift_tab\n<C-d>\nsetup\vtabout\frequire\0", "config", "tabout.nvim")
+try_loadstring("\27LJ\2\n•\3\0\0\5\0\f\0\0236\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0004\3\a\0005\4\4\0>\4\1\0035\4\5\0>\4\2\0035\4\6\0>\4\3\0035\4\a\0>\4\4\0035\4\b\0>\4\5\0035\4\t\0>\4\6\3=\3\n\0024\3\0\0=\3\v\2B\0\2\1K\0\1\0\fexclude\ftabouts\1\0\2\nclose\6}\topen\6{\1\0\2\nclose\6]\topen\6[\1\0\2\nclose\6)\topen\6(\1\0\2\nclose\6`\topen\6`\1\0\2\nclose\6\"\topen\6\"\1\0\2\nclose\6'\topen\6'\1\0\t\21enable_backwards\2\22default_shift_tab\n<C-d>\21ignore_beginning\2\16default_tab\n<C-t>\21act_as_shift_tab\1\15act_as_tab\2\21backwards_tabkey\f<S-Tab>\vtabkey\n<Tab>\15completion\2\nsetup\vtabout\frequire\0", "config", "tabout.nvim")
 
 time([[Sequenced loading]], false)
 
