@@ -3,15 +3,6 @@ local lspkind = require('lspkind')
 local luasnip = require('luasnip')
 local compare = require('cmp.config.compare')
 
-local tabnine = require('cmp_tabnine.config')
-tabnine:setup({
-  max_lines = 1000;
-  max_num_results = 20;
-  sort = true;
-  run_on_every_keystroke = true;
-  snippet_placeholder = '..';
-})
-
 local source_mapping = {
   buffer = "[Buffer]",
   nvim_lsp = "[LSP]",
@@ -20,6 +11,7 @@ local source_mapping = {
   path = "[Path]",
 }
 
+require("luasnip.loaders.from_vscode").lazy_load()
 
 lspkind.init()
 cmp.setup {
@@ -59,7 +51,6 @@ cmp.setup {
     end
   },
   sources = {
-    { name = 'cmp_tabnine'},
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'nvim_lua'},
@@ -89,7 +80,6 @@ cmp.setup {
   sorting = {
     priority_weight = 2,
     comparators = {
-      require('cmp_tabnine.compare'),
       compare.offset,
       compare.exact,
       compare.score,

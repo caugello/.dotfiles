@@ -18,9 +18,6 @@ require('packer').startup(function(use)
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
 
-      -- Useful status updates for LSP
-      'j-hui/fidget.nvim',
-
       -- Additional lua configuration, makes nvim stuff amazing
       'folke/neodev.nvim',
     },
@@ -34,17 +31,17 @@ require('packer').startup(function(use)
     end,
   }
 
-  use { 'codota/tabnine-nvim', run = "./dl_binaries.sh", config = function ()
-    require('tabnine').setup({
-      disable_auto_comment=true,
-      accept_keymap="<Tab>",
-      dismiss_keymap = "<C-]>",
-      debounce_ms = 800,
-      suggestion_color = {gui = "#808080", cterm = 244},
-      exclude_filetypes = {"TelescopePrompt"}
-    })
-    end
-  }
+  --use { 'codota/tabnine-nvim', run = "./dl_binaries.sh", config = function ()
+    --require('tabnine').setup({
+      --disable_auto_comment=true,
+      --accept_keymap="<C-f>",
+      --dismiss_keymap = "<C-]>",
+      --debounce_ms = 800,
+      --suggestion_color = {gui = "#808080", cterm = 244},
+      --exclude_filetypes = {"TelescopePrompt"}
+    --})
+    --end
+  --}
 
   use { -- Autocompletion
     'hrsh7th/nvim-cmp',
@@ -71,7 +68,7 @@ require('packer').startup(function(use)
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
   use 'lewis6991/gitsigns.nvim'
-
+  use 'github/copilot.vim'
   use 'navarasu/onedark.nvim' -- Theme inspired by Atom
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
@@ -79,7 +76,7 @@ require('packer').startup(function(use)
   use 'preservim/nerdcommenter'
 
   -- Fuzzy Finder (files, lsp, etc)
-  use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
+  use { 'nvim-telescope/telescope.nvim', tag = '0.1.8', requires = { 'nvim-lua/plenary.nvim' } }
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
@@ -121,7 +118,6 @@ require('packer').startup(function(use)
   use 'folke/trouble.nvim'
   use 'windwp/nvim-autopairs'
   use 'ray-x/go.nvim'
-  use 'hoschi/yode-nvim'
   use 'voldikss/vim-floaterm'
   use 'sudormrfbin/cheatsheet.nvim'
   use('jose-elias-alvarez/null-ls.nvim')
@@ -145,6 +141,5 @@ require('plugins.indent')
 require('plugins.harpoon')
 require('plugins.floaterm')
 require('plugins.go')
-require('plugins.yode')
 require('plugins.prettier')
 require('plugins.gp')

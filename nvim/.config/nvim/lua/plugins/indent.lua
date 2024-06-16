@@ -7,9 +7,21 @@ require'utils'.apply_options({
 
 vim.g.indent_blankline_fileTypeExclude = {"golang"}
 
-require'indent_blankline'.setup {
-    char = "|",
-    buftype_exclude = {"terminal"},
---    show_end_of_line = true,
-    show_current_context = true,
+local highlight = {
+    "CursorColumn",
+    "Whitespace",
 }
+require("ibl").setup {
+    indent = { highlight = highlight, char = "" },
+    whitespace = {
+        highlight = highlight,
+        remove_blankline_trail = false,
+    },
+    scope = { enabled = false },
+}
+--require'ibl'.setup {
+    ----char = "|",
+    ----buftype_exclude = {"terminal"},
+------    show_end_of_line = true,
+    ----show_current_context = true,
+--}
